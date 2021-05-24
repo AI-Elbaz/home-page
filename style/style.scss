@@ -10,7 +10,6 @@ $gray-6: #F2F2F2;
 $primary: #2D9CDB;
 $primary-2: #EB5757;
 
-
 * {
     margin: 0;
     padding: 0;
@@ -24,4 +23,24 @@ body {
 .container {
     display: flex;
     justify-content: center;
+}
+
+section {
+    width: 100%;
+}
+
+footer {
+    color: #BDBDBD;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 24px 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer a,
+footer a:link,
+footer a:visited {
+    color: #BDBDBD;
+    font-weight: bold;
 }
