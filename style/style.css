@@ -32,10 +32,34 @@ body {
 
 .container {
   width: 100%;
-  display: flex;
   padding: 0 10px;
   margin-left: auto;
   margin-right: auto;
+}
+@media only screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
 }
 
 nav, header, section, footer {
@@ -95,12 +119,14 @@ h2 {
 }
 
 nav {
-  display: flex;
   padding: 15px 0;
+  margin-bottom: 20px;
+}
+nav .container {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   position: relative;
-  margin-bottom: 20px;
   justify-content: space-between;
 }
 nav ul {
@@ -112,8 +138,6 @@ nav ul {
   overflow: hidden;
   background-color: #fff;
   transition: 0.3s ease-in-out;
-  border-top: 1px solid var(--gray-6);
-  border-bottom: 1px solid var(--gray-6);
 }
 nav ul li {
   line-height: 2em;
@@ -261,7 +285,7 @@ form input[type=submit] {
   margin-top: 35px;
 }
 
-.team {
+.team .container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -304,8 +328,10 @@ form input[type=submit] {
 }
 
 .clients {
-  display: flex;
   font-size: 16px;
+}
+.clients .container {
+  display: flex;
   flex-direction: column;
 }
 .clients .qoute {
@@ -344,6 +370,7 @@ footer {
   background-color: var(--footer-bg);
 }
 footer .container {
+  display: flex;
   flex-direction: column;
 }
 footer ul, footer .ownership, footer .contact {
