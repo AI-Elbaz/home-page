@@ -1,10 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+:root {
+  --gray-1: #333333;
+  --gray-2: #4F4F4F;
+  --gray-3: #828282;
+  --gray-4: #BDBDBD;
+  --gray-5: #E0E0E0;
+  --gray-6: #F2F2F2;
+  --blue: #2D9CDB;
+  --red: #EB5757;
+  --green: #27AE60;
+  --primary: var(--blue);
+  --primary-2: var(--red);
+  --footer-bg: #100E1D;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
@@ -12,25 +31,33 @@ body {
 }
 
 .container {
+  width: 100%;
   display: flex;
   padding: 0 10px;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-section, nav, header {
+nav, header, section, footer {
   width: 100%;
-  max-width: 1400px;
 }
 
 section, header {
   margin-bottom: 100px;
 }
 
+h1, .h1, h2, h3, p, a, label, input[type=submit] {
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
 .title {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 24px;
   font-weight: 800;
-  line-height: 1.46em;
   font-family: "Heebo", sans-serif;
 }
 
@@ -44,57 +71,62 @@ img {
 }
 
 h1, .h1 {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.5em;
   margin-bottom: 15px;
 }
 
 h2 {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.5em;
   padding: 0 30px;
   margin-bottom: 50px;
 }
 
 .highlight {
-  color: #2D9CDB;
+  color: var(--primary);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.5em;
 }
 .highlight.red {
-  color: #EB5757;
+  color: var(--primary-2);
 }
 
 nav {
   display: flex;
   padding: 15px 0;
+  flex-wrap: wrap;
   align-items: center;
+  position: relative;
+  margin-bottom: 20px;
   justify-content: space-between;
 }
 nav ul {
-  display: none;
+  height: 0;
+  width: 100%;
+  position: absolute;
+  top: 100%;
   list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  border-top: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-6);
 }
-nav ul > li {
-  display: inline-block;
-  margin: 0 25px;
+nav ul li {
+  line-height: 2em;
 }
 nav ul a {
-  color: #333333;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.5em;
-  text-decoration: none;
+  color: var(--gray-1);
 }
 nav #toggle-menu {
   border: none;
   display: block;
-  font-size: 18px;
+  font-size: 24px;
   background: none;
 }
 
@@ -106,31 +138,29 @@ header > div {
   padding: 0 30px;
 }
 header .description {
-  color: #4F4F4F;
+  color: var(--gray-2);
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.5em;
   margin-bottom: 30px;
 }
 
 form label {
-  color: #828282;
+  color: var(--gray-3);
   font-size: 10px;
-  line-height: 1.5em;
 }
 form .form-row {
   display: flex;
   width: fit-content;
   justify-content: space-between;
-  background: #F2F2F2;
+  background: var(--gray-6);
   border-radius: 12px;
   padding: 4px 4px 4px 20px;
-  font-size: 14px;
 }
 form input[type=email] {
+  font-size: 14px;
   border: none;
   background: none;
-  color: #4F4F4F;
+  color: var(--gray-2);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
@@ -138,10 +168,9 @@ form input[type=email]:focus {
   outline: none;
 }
 form input[type=submit] {
-  color: #F2F2F2;
+  color: var(--gray-6);
   font-size: 14px;
-  line-height: 1.5em;
-  background: #2D9CDB;
+  background: var(--primary);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   border: none;
@@ -152,6 +181,7 @@ form input[type=submit] {
 .cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -172,36 +202,32 @@ form input[type=submit] {
   margin-bottom: 35px;
 }
 .services .service .icon.blue {
-  background: #2D9CDB;
+  background: var(--blue);
 }
 .services .service .icon.red {
-  background: #EB5757;
+  background: var(--red);
 }
 .services .service .icon.green {
-  background: #27AE60;
+  background: var(--green);
 }
 .services .service h3 {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 24px;
   font-weight: 700;
-  line-height: 1.5em;
 }
 .services .service .description {
-  color: #4F4F4F;
+  color: var(--gray-2);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.5em;
   margin: 25px 0;
 }
 .services .service .btn {
-  color: #828282;
-  background: #E0E0E0;
+  color: var(--gray-3);
+  background: var(--gray-5);
   font-size: 16px;
-  line-height: 1.5em;
   font-weight: 500;
   padding: 9px 12px;
   border-radius: 12px;
-  text-decoration: none;
   transition: color 0.5s, background-color 0.5s ease-in-out;
 }
 .services .service:hover {
@@ -209,7 +235,7 @@ form input[type=submit] {
 }
 .services .service:hover .btn {
   color: #fff;
-  background: #2D9CDB;
+  background: var(--blue);
 }
 
 .our-works .cards {
@@ -219,23 +245,19 @@ form input[type=submit] {
   border-radius: 12px;
 }
 .our-works .feature {
-  color: #828282;
+  color: var(--gray-3);
   font-size: 12px;
-  line-height: 1.5em;
   font-weight: 300px;
 }
 .our-works .name {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.5em;
 }
 .our-works a {
-  color: #2D9CDB;
+  color: var(--blue);
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.5em;
-  text-decoration: none;
   margin-top: 35px;
 }
 
@@ -246,17 +268,15 @@ form input[type=submit] {
 .team h2 {
   padding: 0;
   font-size: 36px;
-  line-height: 1.5em;
   margin-bottom: 14px;
 }
 .team .highlight {
   font-size: 18px;
 }
 .team .info {
-  color: #4F4F4F;
+  color: var(--gray-2);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.5em;
   margin: 25px 0;
 }
 .team .images {
@@ -291,8 +311,7 @@ form input[type=submit] {
 .clients .qoute {
   font-weight: 500;
   font-size: 1.5em;
-  line-height: 1.5em;
-  color: #333333;
+  color: var(--gray-1);
   margin-bottom: 30px;
 }
 .clients .credit {
@@ -309,22 +328,20 @@ form input[type=submit] {
   border-radius: 12px;
 }
 .clients .credit .name {
-  color: #333333;
+  color: var(--gray-1);
   font-size: 1.5em;
   font-weight: 500;
-  line-height: 1.5em;
 }
 .clients .credit .job {
-  color: #828282;
+  color: var(--gray-3);
   font-weight: 500;
   font-size: 1.125em;
-  line-height: 1.5em;
 }
 
 footer {
   font-size: 18px;
   padding: 2em 2.5em;
-  background-color: #100E1D;
+  background-color: var(--footer-bg);
 }
 footer .container {
   flex-direction: column;
@@ -333,7 +350,7 @@ footer ul, footer .ownership, footer .contact {
   margin: 32.5px 0;
 }
 footer .title {
-  color: #F2F2F2;
+  color: var(--gray-6);
   font-size: 2em;
 }
 footer ul {
@@ -343,7 +360,6 @@ footer ul li {
   line-height: 2em;
 }
 footer ul a {
-  text-decoration: none;
   color: #fff;
   font-size: 1em;
 }
@@ -357,14 +373,13 @@ footer .social img {
 footer .license {
   font-weight: 500;
   font-size: 0.8em;
-  color: #F2F2F2;
-  line-height: 1.5em;
+  color: var(--gray-6);
   text-align: center;
   margin-top: 100px;
   font-family: "Montserrat", sans-serif;
 }
 footer .license a {
-  color: #F2F2F2;
+  color: var(--gray-6);
   font-weight: 700;
 }
 

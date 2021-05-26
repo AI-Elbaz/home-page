@@ -19,26 +19,56 @@
     --footer-bg: #100E1D;
 }
 
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
 }
 
+// .container {
+//     display: flex;
+//     padding: 0 10px;
+//     justify-content: center;
+// }
+
 .container {
+    width: 100%;
     display: flex;
     padding: 0 10px;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    // @media only screen and (min-width: 576px) {
+    //     max-width: 540px;
+    // }
+
+    // @media only screen and (min-width: 768px) {
+    //     max-width: 720px;
+    // }
+
+    // @media only screen and (min-width: 992px) {
+    //     max-width: 960px;
+    // }
+
+    // @media only screen and (min-width: 1200px) {
+    //     max-width: 1140px;
+    // }
+
+    // @media only screen and (min-width: 1400px) {
+    //     max-width: 1320px;
+    // }
 }
 
-section, nav, header {
+nav, header, section, footer {
     width: 100%;
-    max-width: 1400px
 }
 
 section, header {
@@ -97,22 +127,32 @@ h2 {
 nav {
     display: flex;
     padding: 15px 0;
+    flex-wrap: wrap;
     align-items: center;
+    position: relative;
+    margin-bottom: 20px;
     justify-content: space-between;
 
     ul {
-        display: none;
+        height: 0;
+        width: 100%;
+        position: absolute;
+        top: 100%;
         list-style: none;
+        overflow: hidden;
+        background-color: #fff;
+        transition: 0.3s ease-in-out;
+        border-top: 1px solid var(--gray-6);
+        border-bottom: 1px solid var(--gray-6);
 
-        & > li {
-            display: inline-block;
-            margin: 0 25px;
+        li {
+            line-height: 2em;
         }
 
         a {
-            color: var(--gray-1);
-            font-size: 24px;
+            font-size: 16px;
             font-weight: 500;
+            color: var(--gray-1);
         }
     }
 
@@ -155,10 +195,10 @@ form {
         background: var(--gray-6);
         border-radius: 12px;
         padding: 4px 4px 4px 20px;
-        font-size: 14px;
     }
-
+    
     input[type="email"] {
+        font-size: 14px;
         border: none;
         background: none;
         color: var(--gray-2);
@@ -185,6 +225,7 @@ form {
 .cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
