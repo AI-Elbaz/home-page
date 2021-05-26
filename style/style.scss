@@ -2,20 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 
-$gray-1: #333333;
-$gray-2: #4F4F4F;
-$gray-3: #828282;
-$gray-4: #BDBDBD;
-$gray-5: #E0E0E0;
-$gray-6: #F2F2F2;
+:root {
+    --gray-1: #333333;
+    --gray-2: #4F4F4F;
+    --gray-3: #828282;
+    --gray-4: #BDBDBD;
+    --gray-5: #E0E0E0;
+    --gray-6: #F2F2F2;
 
-$blue: #2D9CDB;
-$red: #EB5757;
-$green: #27AE60;
+    --blue: #2D9CDB;
+    --red: #EB5757;
+    --green: #27AE60;
 
-$primary: $blue;
-$primary-2: $red;
-$footer-bg: #100E1D;
+    --primary: var(--blue);
+    --primary-2: var(--red);
+    --footer-bg: #100E1D;
+}
+
 
 * {
     margin: 0;
@@ -42,11 +45,18 @@ section, header {
     margin-bottom: 100px;
 }
 
+h1, .h1, h2, h3 ,p, a, label, input[type="submit"] {
+    line-height: 1.5em;
+}
+
+a {
+    text-decoration: none;
+}
+
 .title {
-    color: $gray-1;
+    color: var(--gray-1);
     font-size: 24px;
     font-weight: 800;
-    line-height: 1.46em;
     font-family: 'Heebo', sans-serif;
 }
 
@@ -60,30 +70,27 @@ img {
 }
 
 h1, .h1 {
-    color: $gray-1;
+    color: var(--gray-1);
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.5em;
     margin-bottom: 15px;
 }
 
 h2 {
-    color: $gray-1;
+    color: var(--gray-1);
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.5em;
     padding: 0 30px;
     margin-bottom: 50px;
 }
 
 .highlight {
-    color: $primary;
+    color: var(--primary);
     font-size: 12px;
     font-weight: 500;
-    line-height: 1.5em;
 
     &.red {
-        color: $primary-2;
+        color: var(--primary-2);
     }
 }
 
@@ -103,18 +110,16 @@ nav {
         }
 
         a {
-            color: $gray-1;
+            color: var(--gray-1);
             font-size: 24px;
             font-weight: 500;
-            line-height: 1.5em;
-            text-decoration: none;
         }
     }
 
     #toggle-menu {
         border: none;
         display: block;
-        font-size: 18px;
+        font-size: 24px;
         background: none;
     }
 }
@@ -130,26 +135,24 @@ header {
     }
 
     .description {
-        color: $gray-2;
+        color: var(--gray-2);
         font-size: 12px;
         font-weight: 400;
-        line-height: 1.5em;
         margin-bottom: 30px;
     }
 }
 
 form {
     label {
-        color: $gray-3;
+        color: var(--gray-3);
         font-size: 10px;
-        line-height: 1.5em;
     }
 
     .form-row {
         display: flex;
         width: fit-content;
         justify-content: space-between;
-        background: $gray-6;
+        background: var(--gray-6);
         border-radius: 12px;
         padding: 4px 4px 4px 20px;
         font-size: 14px;
@@ -158,7 +161,7 @@ form {
     input[type="email"] {
         border: none;
         background: none;
-        color: $gray-2;
+        color: var(--gray-2);
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
 
@@ -168,10 +171,9 @@ form {
     }
 
     input[type="submit"] {
-        color: $gray-6;
+        color: var(--gray-6);
         font-size: 14px;
-        line-height: 1.5em;
-        background: $primary;
+        background: var(--primary);
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
         border: none;
@@ -187,10 +189,9 @@ form {
 }
 
 @mixin Description {
-    color: $gray-2;
+    color: var(--gray-2);
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.5em;
     margin: 25px 0;
 }
 
@@ -211,23 +212,22 @@ form {
         margin-bottom: 35px;
 
         &.blue {
-            background: $blue;
+            background: var(--blue);
         }
 
         &.red {
-            background: $red;
+            background: var(--red);
         }
 
         &.green {
-            background: $green;
+            background: var(--green);
         }
     }
 
     h3 {
-        color: $gray-1;
+        color: var(--gray-1);
         font-size: 24px;
         font-weight: 700;
-        line-height: 1.5em;
     }
 
     .description {
@@ -235,14 +235,12 @@ form {
     }
 
     .btn {
-        color: $gray-3;
-        background: $gray-5;
+        color: var(--gray-3);
+        background: var(--gray-5);
         font-size: 16px;
-        line-height: 1.5em;
         font-weight: 500;
         padding: 9px 12px;
         border-radius: 12px;
-        text-decoration: none;
         transition: color 0.5s, background-color 0.5s ease-in-out;
     }
 
@@ -251,7 +249,7 @@ form {
 
         .btn {
             color: #fff;
-            background: $blue;
+            background: var(--blue);
         }
     }
 }
@@ -266,25 +264,21 @@ form {
     }
 
     .feature {
-        color: $gray-3;
+        color: var(--gray-3);
         font-size: 12px;
-        line-height: 1.5em;
         font-weight: 300px;
     }
 
     .name {
-        color: $gray-1;
+        color: var(--gray-1);
         font-size: 18px;
         font-weight: 500;
-        line-height: 1.5em;
     }
 
     a {
-        color: $blue;
+        color: var(--blue);
         font-size: 18px;
         font-weight: 500;
-        line-height: 1.5em;
-        text-decoration: none;
         margin-top: 35px;
     }
 }
@@ -296,7 +290,6 @@ form {
     h2 {
         padding: 0;
         font-size: 36px;
-        line-height: 1.5em;
         margin-bottom: 14px;
     }
 
@@ -347,8 +340,7 @@ form {
     .qoute {
         font-weight: 500;
         font-size: 1.5em;
-        line-height: 1.5em;
-        color: $gray-1;
+        color: var(--gray-1);
         margin-bottom: 30px;
     }
 
@@ -368,17 +360,15 @@ form {
         }
 
         .name {
-            color: $gray-1;
+            color: var(--gray-1);
             font-size: 1.5em;
             font-weight: 500;
-            line-height: 1.5em;
         }
 
         .job {
-            color: $gray-3;
+            color: var(--gray-3);
             font-weight: 500;
             font-size: 1.125em;
-            line-height: 1.5em;
         }
     }
 }
@@ -386,7 +376,7 @@ form {
 footer {
     font-size: 18px;
     padding: 2em 2.5em;
-    background-color: $footer-bg;
+    background-color: var(--footer-bg);
     
     .container {
         flex-direction: column;
@@ -397,7 +387,7 @@ footer {
     }
 
     .title {
-        color: $gray-6;
+        color: var(--gray-6);
         font-size: 2em;
     }
 
@@ -409,7 +399,6 @@ footer {
         }
 
         a {
-            text-decoration: none;
             color: #fff;
             font-size: 1em;
         }
@@ -427,14 +416,13 @@ footer {
     .license {
         font-weight: 500;
         font-size: 0.8em;
-        color: $gray-6;
-        line-height: 1.5em;
+        color: var(--gray-6);
         text-align: center;
         margin-top: 100px;
         font-family: 'Montserrat', sans-serif;
 
         a {
-            color: $gray-6;
+            color: var(--gray-6);
             font-weight: 700;
         }
     }
