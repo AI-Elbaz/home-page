@@ -14,6 +14,8 @@
   --primary: var(--blue);
   --primary-2: var(--red);
   --footer-bg: #100E1D;
+  --font-size-small: 16px;
+  --font-size-large: 24px;
 }
 
 * {
@@ -23,7 +25,14 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
+  font-size: var(--font-size-small);
+}
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 150%;
+    font-size: var(--font-size-large);
+  }
 }
 
 body {
@@ -67,6 +76,7 @@ nav, header, section, footer {
 }
 
 section, header {
+  font-size: 1rem;
   margin-bottom: 100px;
 }
 
@@ -79,9 +89,9 @@ a {
 }
 
 .title {
-  color: var(--gray-1);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 800;
+  color: var(--gray-1);
   font-family: "Heebo", sans-serif;
 }
 
@@ -94,25 +104,22 @@ img {
   width: 100%;
 }
 
-h1, .h1 {
-  color: var(--gray-1);
-  font-size: 24px;
+h1, .h1, h2 {
+  font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 15px;
+  color: var(--gray-1);
 }
 
 h2 {
-  color: var(--gray-1);
-  font-size: 24px;
-  font-weight: 500;
   padding: 0 30px;
   margin-bottom: 50px;
 }
 
 .highlight {
-  color: var(--primary);
-  font-size: 12px;
+  font-size: 0.75em;
   font-weight: 500;
+  color: var(--primary);
 }
 .highlight.red {
   color: var(--primary-2);
@@ -126,35 +133,54 @@ nav .container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  position: relative;
   justify-content: space-between;
 }
 nav ul {
-  height: 0;
-  width: 100%;
-  position: absolute;
-  top: 100%;
+  display: flex;
   list-style: none;
-  overflow: hidden;
+  gap: 1.22em;
   background-color: #fff;
-  transition: 0.3s ease-in-out;
 }
 nav ul li {
   line-height: 2em;
 }
 nav ul a {
-  font-size: 16px;
+  font-size: 0.9em;
   font-weight: 500;
   color: var(--gray-1);
 }
 nav #toggle-menu {
+  display: none;
   border: none;
-  display: block;
-  font-size: 24px;
+  font-size: 1.5em;
+  cursor: pointer;
   background: none;
 }
+@media only screen and (max-width: 768px) {
+  nav #toggle-menu {
+    display: block;
+  }
+  nav ul {
+    gap: 0.5em;
+    padding: 5px 0;
+    height: 0;
+    flex: 1 0 100%;
+    overflow: hidden;
+    flex-direction: column;
+    border-bottom: 1px solid var(--gray-6);
+  }
+  nav ul.show {
+    height: auto;
+  }
+}
 
+@media only screen and (min-width: 992px) {
+  header .container:not(.img-container) {
+    padding: 0 8rem;
+  }
+}
 header img {
+  display: block;
   border-radius: 18px;
   margin-bottom: 22px;
 }
@@ -162,15 +188,18 @@ header > div {
   padding: 0 30px;
 }
 header .description {
-  color: var(--gray-2);
-  font-size: 12px;
+  font-size: 0.75em;
   font-weight: 400;
   margin-bottom: 30px;
+  color: var(--gray-2);
 }
 
+form {
+  font-family: "Poppins", sans-serif;
+}
 form label {
   color: var(--gray-3);
-  font-size: 10px;
+  font-size: 0.625em;
 }
 form .form-row {
   display: flex;
@@ -181,11 +210,10 @@ form .form-row {
   padding: 4px 4px 4px 20px;
 }
 form input[type=email] {
-  font-size: 14px;
+  font-size: 0.875em;
   border: none;
   background: none;
   color: var(--gray-2);
-  font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
 form input[type=email]:focus {
@@ -193,9 +221,8 @@ form input[type=email]:focus {
 }
 form input[type=submit] {
   color: var(--gray-6);
-  font-size: 14px;
+  font-size: 0.875em;
   background: var(--primary);
-  font-family: "Poppins", sans-serif;
   font-weight: 500;
   border: none;
   border-radius: 12px;
@@ -205,54 +232,22 @@ form input[type=submit] {
 .cards {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25em;
 }
 
 .services .service {
+  width: 100%;
+  min-width: 300px;
+  flex: 1 1 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
   border-radius: 24px;
   padding: 40px 30px 50px;
   transition: 0.5s box-shadow ease-in-out;
-}
-.services .service .icon {
-  color: #fff;
-  padding: 20px;
-  font-size: 27px;
-  border-radius: 16px;
-  margin-bottom: 35px;
-}
-.services .service .icon.blue {
-  background: var(--blue);
-}
-.services .service .icon.red {
-  background: var(--red);
-}
-.services .service .icon.green {
-  background: var(--green);
-}
-.services .service h3 {
-  color: var(--gray-1);
-  font-size: 24px;
-  font-weight: 700;
-}
-.services .service .description {
-  color: var(--gray-2);
-  font-size: 16px;
-  font-weight: 400;
-  margin: 25px 0;
-}
-.services .service .btn {
-  color: var(--gray-3);
-  background: var(--gray-5);
-  font-size: 16px;
-  font-weight: 500;
-  padding: 9px 12px;
-  border-radius: 12px;
-  transition: color 0.5s, background-color 0.5s ease-in-out;
 }
 .services .service:hover {
   box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.1);
@@ -261,7 +256,47 @@ form input[type=submit] {
   color: #fff;
   background: var(--blue);
 }
+.services .icon {
+  color: #fff;
+  padding: 20px;
+  font-size: 1.7em;
+  border-radius: 16px;
+  margin-bottom: 35px;
+}
+.services .icon.blue {
+  background: var(--blue);
+}
+.services .icon.red {
+  background: var(--red);
+}
+.services .icon.green {
+  background: var(--green);
+}
+.services h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--gray-1);
+}
+.services .description {
+  color: var(--gray-2);
+  font-size: 1em;
+  font-weight: 400;
+  margin: 1.5625rem 0;
+}
+.services .btn {
+  font-size: 1em;
+  font-weight: 500;
+  padding: 9px 12px;
+  border-radius: 12px;
+  color: var(--gray-3);
+  background: var(--gray-5);
+  transition: color 0.5s, background-color 0.5s ease-in-out;
+}
 
+.our-works .container {
+  display: flex;
+  flex-direction: column;
+}
 .our-works .cards {
   margin-bottom: 35px;
 }
@@ -270,19 +305,29 @@ form input[type=submit] {
 }
 .our-works .feature {
   color: var(--gray-3);
-  font-size: 12px;
-  font-weight: 300px;
+  font-size: 0.75em;
+  font-weight: 300;
 }
 .our-works .name {
-  color: var(--gray-1);
-  font-size: 18px;
+  font-size: 1.125em;
   font-weight: 500;
+  color: var(--gray-1);
 }
 .our-works a {
   color: var(--blue);
   font-size: 18px;
   font-weight: 500;
   margin-top: 35px;
+  align-self: flex-end;
+}
+@media only screen and (min-width: 1200px) {
+  .our-works .card:first-of-type,
+.our-works .card:nth-of-type(3) {
+    margin-top: 150px;
+  }
+  .our-works a {
+    align-self: flex-end;
+  }
 }
 
 .team .container {
@@ -291,17 +336,17 @@ form input[type=submit] {
 }
 .team h2 {
   padding: 0;
-  font-size: 36px;
+  font-size: 2.25em;
   margin-bottom: 14px;
 }
 .team .highlight {
-  font-size: 18px;
+  font-size: 1.125em;
 }
 .team .info {
   color: var(--gray-2);
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 400;
-  margin: 25px 0;
+  margin: 0.875rem 0;
 }
 .team .images {
   width: 100%;
@@ -326,10 +371,15 @@ form input[type=submit] {
   border-radius: 24px;
   width: calc(1.09 * 162.25px);
 }
-
-.clients {
-  font-size: 16px;
+@media only screen and (min-width: 1200px) {
+  .team .container {
+    justify-content: space-between;
+  }
+  .team .images {
+    width: auto;
+  }
 }
+
 .clients .container {
   display: flex;
   flex-direction: column;
@@ -341,8 +391,9 @@ form input[type=submit] {
   margin-bottom: 30px;
 }
 .clients .credit {
-  gap: 30px;
+  gap: 1.88em;
   display: flex;
+  align-items: center;
 }
 .clients .credit > div {
   display: flex;
@@ -351,30 +402,30 @@ form input[type=submit] {
 }
 .clients .credit img {
   width: 80px;
+  height: 80px;
   border-radius: 12px;
 }
 .clients .credit .name {
-  color: var(--gray-1);
   font-size: 1.5em;
   font-weight: 500;
+  color: var(--gray-1);
 }
 .clients .credit .job {
-  color: var(--gray-3);
-  font-weight: 500;
   font-size: 1.125em;
+  font-weight: 500;
+  color: var(--gray-3);
 }
 
 footer {
-  font-size: 18px;
+  font-size: 1.125em;
   padding: 2em 2.5em;
   background-color: var(--footer-bg);
 }
 footer .container {
   display: flex;
-  flex-direction: column;
-}
-footer ul, footer .ownership, footer .contact {
-  margin: 32.5px 0;
+  flex-wrap: wrap;
+  gap: 100px;
+  justify-content: space-between;
 }
 footer .title {
   color: var(--gray-6);
@@ -392,7 +443,7 @@ footer ul a {
 }
 footer .social {
   display: flex;
-  gap: 10px;
+  gap: 0.625em;
 }
 footer .social img {
   width: 24px;
@@ -408,6 +459,24 @@ footer .license {
 footer .license a {
   color: var(--gray-6);
   font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) {
+  h1, .h1 {
+    font-size: 2rem;
+  }
+
+  .services {
+    font-size: calc(16/24 * 1rem);
+  }
+
+  .credit {
+    font-size: calc(16/24 * 1rem);
+  }
+
+  .team {
+    font-size: calc(16/24 * 1rem);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

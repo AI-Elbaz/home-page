@@ -17,6 +17,9 @@
     --primary: var(--blue);
     --primary-2: var(--red);
     --footer-bg: #100E1D;
+
+    --font-size-small: 16px;
+    --font-size-large: 24px;
 }
 
 * {
@@ -26,18 +29,18 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 100%;
+    font-size: var(--font-size-small);
+
+    @media only screen and (min-width: 768px) {
+        font-size: 150%;
+        font-size: var(--font-size-large);
+    }
 }
 
 body {
     font-family: 'Poppins', sans-serif;
 }
-
-// .container {
-//     display: flex;
-//     padding: 0 10px;
-//     justify-content: center;
-// }
 
 .container {
     width: 100%;
@@ -71,6 +74,7 @@ nav, header, section, footer {
 }
 
 section, header {
+    font-size: 1rem;
     margin-bottom: 100px;
 }
 
@@ -83,9 +87,9 @@ a {
 }
 
 .title {
-    color: var(--gray-1);
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 800;
+    color: var(--gray-1);
     font-family: 'Heebo', sans-serif;
 }
 
@@ -98,25 +102,22 @@ img {
     width: 100%;
 }
 
-h1, .h1 {
-    color: var(--gray-1);
-    font-size: 24px;
+h1, .h1, h2 {
+    font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 15px;
+    color: var(--gray-1);
 }
 
 h2 {
-    color: var(--gray-1);
-    font-size: 24px;
-    font-weight: 500;
     padding: 0 30px;
     margin-bottom: 50px;
 }
 
 .highlight {
-    color: var(--primary);
-    font-size: 12px;
+    font-size: 0.75em;
     font-weight: 500;
+    color: var(--primary);
 
     &.red {
         color: var(--primary-2);
@@ -131,43 +132,64 @@ nav {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        position: relative;
         justify-content: space-between;
     }
 
     ul {
-        height: 0;
-        width: 100%;
-        position: absolute;
-        top: 100%;
+        display: flex;
         list-style: none;
-        overflow: hidden;
+        gap: 1.22em;
         background-color: #fff;
-        transition: 0.3s ease-in-out;
-        // border-top: 1px solid var(--gray-6);
-        // border-bottom: 1px solid var(--gray-6);
 
         li {
             line-height: 2em;
         }
 
         a {
-            font-size: 16px;
+            font-size: 0.9em;
             font-weight: 500;
             color: var(--gray-1);
         }
     }
 
     #toggle-menu {
+        display: none;
         border: none;
-        display: block;
-        font-size: 24px;
+        font-size: 1.5em;
+        cursor: pointer;
         background: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #toggle-menu {
+            display: block;
+        }
+
+        ul {
+            gap: 0.5em;
+            padding: 5px 0;
+            height: 0;
+            flex: 1 0 100%;
+            overflow: hidden;
+            flex-direction: column;
+            border-bottom: 1px solid var(--gray-6);
+
+            &.show {
+                height: auto;
+            }
+        }
     }
 }
 
 header {
+    .container:not(.img-container) {
+        @media only screen and (min-width: 992px) {
+            padding: 0 8rem;
+        }
+    }
+
     img {
+        display: block;
         border-radius: 18px;
         margin-bottom: 22px;
     }
@@ -177,17 +199,19 @@ header {
     }
 
     .description {
-        color: var(--gray-2);
-        font-size: 12px;
+        font-size: 0.75em;
         font-weight: 400;
         margin-bottom: 30px;
+        color: var(--gray-2);
     }
 }
 
 form {
+    font-family: 'Poppins', sans-serif;
+
     label {
         color: var(--gray-3);
-        font-size: 10px;
+        font-size: 0.625em;
     }
 
     .form-row {
@@ -200,11 +224,10 @@ form {
     }
     
     input[type="email"] {
-        font-size: 14px;
+        font-size: 0.875em;
         border: none;
         background: none;
         color: var(--gray-2);
-        font-family: 'Poppins', sans-serif;
         font-weight: 500;
 
         &:focus {
@@ -214,9 +237,8 @@ form {
 
     input[type="submit"] {
         color: var(--gray-6);
-        font-size: 14px;
+        font-size: 0.875em;
         background: var(--primary);
-        font-family: 'Poppins', sans-serif;
         font-weight: 500;
         border: none;
         border-radius: 12px;
@@ -227,30 +249,45 @@ form {
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-@mixin Description {
-    color: var(--gray-2);
-    font-size: 16px;
-    font-weight: 400;
-    margin: 25px 0;
-}
-
-.services .service {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
-    border-radius: 24px;
-    padding: 40px 30px 50px;
-    transition: 0.5s box-shadow ease-in-out;
+    justify-content: center;
+    gap: 1.25em;
+}
+
+@mixin Description($margin: 1.5625rem 0) {
+    color: var(--gray-2);
+    font-size: 1em;
+    font-weight: 400;
+    margin: $margin;
+}
+
+.services {
+    .service {
+        width: 100%;
+        min-width: 300px;
+        flex: 1 1 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        border-radius: 24px;
+        padding: 40px 30px 50px;
+        transition: 0.5s box-shadow ease-in-out;
+
+        &:hover {
+            box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.1);
+        
+            .btn {
+                color: #fff;
+                background: var(--blue);
+            }
+        }
+    }
 
     .icon {
         color: #fff;
         padding: 20px;
-        font-size: 27px;
+        font-size: 1.7em;
         border-radius: 16px;
         margin-bottom: 35px;
 
@@ -268,36 +305,32 @@ form {
     }
 
     h3 {
-        color: var(--gray-1);
-        font-size: 24px;
+        font-size: 1.5em;
         font-weight: 700;
+        color: var(--gray-1);
     }
 
     .description {
-        @include Description;
+        @include Description();
     }
 
     .btn {
-        color: var(--gray-3);
-        background: var(--gray-5);
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 500;
         padding: 9px 12px;
         border-radius: 12px;
+        color: var(--gray-3);
+        background: var(--gray-5);
         transition: color 0.5s, background-color 0.5s ease-in-out;
-    }
-
-    &:hover {
-        box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.1);
-
-        .btn {
-            color: #fff;
-            background: var(--blue);
-        }
     }
 }
 
 .our-works {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .cards {
         margin-bottom: 35px;
     }
@@ -308,14 +341,14 @@ form {
 
     .feature {
         color: var(--gray-3);
-        font-size: 12px;
-        font-weight: 300px;
+        font-size: 0.75em;
+        font-weight: 300;
     }
 
     .name {
-        color: var(--gray-1);
-        font-size: 18px;
+        font-size: 1.125em;
         font-weight: 500;
+        color: var(--gray-1);
     }
 
     a {
@@ -323,6 +356,18 @@ form {
         font-size: 18px;
         font-weight: 500;
         margin-top: 35px;
+        align-self: flex-end;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .card:first-of-type, 
+        .card:nth-of-type(3) {
+            margin-top: 150px;
+        }
+
+        a {
+            align-self: flex-end;
+        }
     }
 }
 
@@ -334,16 +379,16 @@ form {
 
     h2 {
         padding: 0;
-        font-size: 36px;
+        font-size: 2.25em;
         margin-bottom: 14px;
     }
 
     .highlight {
-        font-size: 18px;
+        font-size: 1.125em;
     }
 
     .info {
-        @include Description;
+        @include Description($margin: 0.875rem 0);
     }
 
     .images {
@@ -375,11 +420,19 @@ form {
             width: calc(1.09 * #{$image-width});
         }
     }
+
+    @media only screen and (min-width: 1200px) {
+        .container {
+            justify-content: space-between;
+        }
+
+        .images {
+            width: auto;
+        }
+    }
 }
 
 .clients {
-    font-size: 16px;
-
     .container {
         display: flex;
         flex-direction: column;
@@ -393,8 +446,9 @@ form {
     }
 
     .credit {
-        gap: 30px;
+        gap: 1.88em;
         display: flex;
+        align-items: center;
 
         & > div {
             display: flex;
@@ -404,35 +458,34 @@ form {
 
         img {
             width: 80px;
+            height: 80px;
             border-radius: 12px;
         }
 
         .name {
-            color: var(--gray-1);
             font-size: 1.5em;
             font-weight: 500;
+            color: var(--gray-1);
         }
 
         .job {
-            color: var(--gray-3);
-            font-weight: 500;
             font-size: 1.125em;
+            font-weight: 500;
+            color: var(--gray-3);
         }
     }
 }
 
 footer {
-    font-size: 18px;
+    font-size: 1.125em;
     padding: 2em 2.5em;
     background-color: var(--footer-bg);
     
     .container {
         display: flex;
-        flex-direction: column;
-    }
-
-    ul, .ownership, .contact {
-        margin: 32.5px 0;
+        flex-wrap: wrap;
+        gap: 100px;
+        justify-content: space-between;
     }
 
     .title {
@@ -455,7 +508,7 @@ footer {
 
     .social {
         display: flex;
-        gap: 10px;
+        gap: 0.625em;
 
         img {
             width: 24px;
@@ -474,5 +527,23 @@ footer {
             color: var(--gray-6);
             font-weight: 700;
         }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    h1, .h1 {
+        font-size: 2rem;
+    }
+    
+    .services {
+        font-size: calc(16/24 * 1rem);
+    }
+
+    .credit {
+        font-size: calc(16/24 * 1rem);
+    }
+
+    .team {
+        font-size: calc(16/24 * 1rem);
     }
 }
