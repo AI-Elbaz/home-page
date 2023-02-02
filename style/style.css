@@ -138,13 +138,12 @@ nav .container {
 nav ul {
   display: flex;
   list-style: none;
-  gap: 1.22em;
+  gap: 1.5em;
   background-color: #fff;
 }
-nav ul li {
-  line-height: 2em;
-}
 nav ul a {
+  display: block;
+  line-height: 2.5em;
   font-size: 0.9em;
   font-weight: 500;
   color: var(--gray-1);
@@ -162,15 +161,15 @@ nav #toggle-menu {
   }
   nav ul {
     gap: 0.5em;
-    padding: 5px 0;
     height: 0;
     flex: 1 0 100%;
     overflow: hidden;
     flex-direction: column;
-    border-bottom: 1px solid var(--gray-6);
   }
   nav ul.show {
     height: auto;
+    padding: 5px 0;
+    border-block: 1px solid var(--gray-6);
   }
 }
 

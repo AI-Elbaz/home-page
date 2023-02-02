@@ -1,56 +1,18 @@
-<!-- Please update value in the {}  -->
+# Home Page
+###### Solution for a challenge from [Devchallenges.io](http://devchallenges.io).
 
-<h1 align="center">Home page</h1>
-
-<div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-</div>
-
-<div align="center">
-  <h3>
-    <a href="https://aboodibrahim.github.io/home-page/">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://github.com/AboodIbrahim/home-page">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/xobQBuf8zWWmiYMIAZe0">
-      Challenge
-    </a>
-  </h3>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-
-## Table of Contents
-
-- [Overview](#overview)
-  - [Built With](#built-with)
-- [Features](#features)
-- [Contact](#contact)
-
-<!-- OVERVIEW -->
-
-## Overview
-
-![screenshot](images/preview.png)
-
-### Built With
-
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
-- HTML
-- SCSS
-- JS
+![screenshot](https://repository-images.githubusercontent.com/370176076/b9b5cd74-459f-4d76-b13d-3400c576d78b)
+<br /><br />
+<h3 align="center">
+   <a href="https://aboodibrahim.github.io/home-page">Demo</a>
+   <span> | </span>
+   <a href="https://github.com/AboodIbrahim/home-page">Solution</a>
+   <span> | </span>
+   <a href="https://devchallenges.io/challenges/xobQBuf8zWWmiYMIAZe0">Challenge</a>
+</h3>
+<br />
 
 ## Features
+- Added a simple navigation for small screens.
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/xobQBuf8zWWmiYMIAZe0) was to build an application to complete the given user stories.
-
-## Contact
-
-- GitHub [@AboodIbrahim](https://{github.com/AboodIbrahim})
+**_Note that this page is not fully interactive as it's designed for a specific [challenge](https://devchallenges.io/challenges/xobQBuf8zWWmiYMIAZe0)._**
